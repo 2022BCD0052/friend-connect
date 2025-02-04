@@ -93,7 +93,7 @@ const VideoMeeting = () => {
 
       <div
         className={`flex-grow flex flex-col md:flex-row relative ${
-          isInMeeting ? 'min-h-screen' : ''
+          isInMeeting ? 'h-screen' : ''
         }`}
       >
       
