@@ -9,28 +9,28 @@ import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 
 const page = () => {
-    const [isLoading,setIsLoading] = useState(false);
-    const url = process.env.NEXTAUTH_URL;
+  const [isLoading, setIsLoading] = useState(false);
+  const url = process.env.NEXTAUTH_URL;
 
-    useEffect(() =>{
-      localStorage.removeItem('hasShownWelcome')
-    },[])
+  useEffect(() => {
+    localStorage.removeItem('hasShownWelcome')
+  }, [])
 
-    const handleLogin = async(provider) =>{
-         setIsLoading(true);
-         try {
-           await signIn(provider,{callbackUrl:url})
-           toast.info(`logging with ${provider} `)
-         } catch (error) {
-           toast.error(`failed to login with ${provider}, please try again`)
-         }finally{
-          setIsLoading(false)
-         }
+  const handleLogin = async (provider) => {
+    setIsLoading(true);
+    try {
+      await signIn(provider, { callbackUrl: url })
+      toast.info(`logging with ${provider}`)
+    } catch (error) {
+      toast.error(`failed to login with ${provider}, please try again`)
+    } finally {
+      setIsLoading(false)
     }
+  }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-r from-blue-100 to-purple-200 dark:from-gray-900 dark:to-gray-800">
-      {isLoading && <Loader/>}
+    <div className="flex min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:from-gray-900 dark:to-gray-800">
+      {isLoading && <Loader />}
       <div className="hidden w-1/2 bg-gray-100 lg:block">
         <Image
           src="/images/meet_image.jpg"
@@ -41,15 +41,16 @@ const page = () => {
         />
       </div>
       <div className="flex flex-col justify-center w-full p-8 lg:w-1/2">
-        <div className="max-w-md mx-auto">
-          <h1 className="mb-4 text-4xl font-bold">Welcome to Google Meet</h1>
-          <p className="mb-8 text-gray-600 dark:textgray-100">
-            Connect with your team anytime, anywhere. Join or start meetings
-            with crystal-clear HD video and audio.
+        <div className="max-w-md mx-auto p-6 bg-white/10 backdrop-blur-lg rounded-xl shadow-2xl">
+          <h1 className="mb-4 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+            Welcome to Google Meet
+          </h1>
+          <p className="mb-8 text-gray-200 text-lg">
+            Connect with your team anytime, anywhere. Join or start meetings with crystal-clear HD video and audio.
           </p>
           <div className="space-y-4">
             <Button
-              className="w-full dark:hover:bg-white dark:hover:text-black "
+              className="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white dark:hover:bg-white dark:hover:text-black hover:scale-105 transition-transform rounded-full shadow-lg transform-gpu"
               variant="outline"
               onClick={() => handleLogin('google')}
             >
@@ -67,28 +68,32 @@ const page = () => {
               Login with Google
             </Button>
           </div>
-            <div className="flex flex-col space-y-4 mt-6">
-                <div className="relative w-full">
-                    <div className="absolute inset-0 flex items-center">
-                   <span className="w-full border-t border-gray-400 dark:border-gray-600"></span>
-                    </div>
+          <div className="flex flex-col space-y-4 mt-6">
+            <div className="relative w-full">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t border-gray-400 dark:border-gray-600"></span>
+              </div>
 
-                    <div className="relative flex justify-center text-xs uppercase">
-                       <span className="bg-background px-2 text-gray-600">Or</span>
-                    </div>
-                </div>
-                <Button className="w-full bg-black text-white dark:hover:bg-gray-200 dark:bg-white dark:text-black " variant="ghost"        onClick={() => handleLogin('github')}>
-                    <Github className="w-5 h-5 mr-2"/>
-                    Login with Github
-                </Button>
-
-                <p className="text-sm text-center text-gray-600 dark:text-gray-400">
-                Don&apos;t have an account? {" "}
-                <Link href='#' className="text-blue-500 hover:underline dark:text-blue-400">
-                   Create now
-                </Link>
-                </p>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-gray-600">Or</span>
+              </div>
             </div>
+            <Button
+              className="w-full bg-gradient-to-r from-gray-800 to-gray-900 text-white dark:hover:bg-gray-200 dark:bg-white dark:text-black hover:scale-105 transition-transform rounded-full shadow-lg transform-gpu"
+              variant="ghost"
+              onClick={() => handleLogin('github')}
+            >
+              <Github className="w-5 h-5 mr-2" />
+              Login with Github
+            </Button>
+
+            <p className="text-sm text-center text-gray-200 dark:text-gray-400">
+              Don&apos;t have an account?{" "}
+              <Link href="#" className="text-blue-400 hover:underline dark:text-blue-500">
+                Create now
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
