@@ -43,10 +43,9 @@ const page = () => {
       <div className="flex flex-col justify-center w-full p-8 lg:w-1/2">
         <div className="max-w-md mx-auto p-6 bg-white/10 backdrop-blur-lg rounded-xl shadow-2xl">
           <h1 className="mb-4 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-            Welcome to Google Meet
-          </h1>
+Welcome to Connect Friend          </h1>
           <p className="mb-8 text-gray-200 text-lg">
-            Connect with your team anytime, anywhere. Join or start meetings with crystal-clear HD video and audio.
+            Connect with your friend anytime, anywhere. Join or start meetings with crystal-clear HD video and audio.
           </p>
           <div className="space-y-4">
             <Button
